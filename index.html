@@ -21,13 +21,12 @@
       margin: 0;
       padding: 0;
     }
-    /* Sticky header layout */
     .site-header {
       background: var(--header-bg);
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1203;
-      height: 66px;
+      height: 102px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -37,14 +36,14 @@
     }
     .header-logo {
       position: absolute; left: 50%; transform: translateX(-50%);
-      height: 66px; display: flex; align-items: center; justify-content: center;
+      height: 102px;
+      display: flex; align-items: center; justify-content: center;
     }
     .header-logo img {
-      max-height: 51px;
+      max-height: 88px;
       width: auto;
       display: block;
     }
-    /* Instagram icon left in header */
     .header-instagram {
       flex: 0 0 auto;
       display: flex;
@@ -61,10 +60,10 @@
       background: #fff;
       border: 2px solid #b43c70;
       border-radius: 50%;
-      width: 39px;
-      height: 39px;
+      width: 60px;
+      height: 60px;
       transition: background .17s, color .17s;
-      font-size: 1.18em;
+      font-size: 1.32em;
     }
     .header-instagram a:hover, .header-instagram a:active {
       background: var(--primary);
@@ -72,9 +71,8 @@
       border-color: var(--primary);
     }
     .header-instagram svg {
-      width: 24px; height: 24px; display: block;
+      width: 35px; height: 35px; display: block;
     }
-    /* SPIN button right in header */
     .header-spin {
       flex: 0 0 auto;
       margin-left: 12px;
@@ -83,7 +81,7 @@
       align-items: center;
     }
     .spin-brownie-btn {
-      width: 43px; height: 43px;
+      width: 60px; height: 60px;
       border-radius: 50%; box-shadow: 0 3px 11px #b43c7033;
       background: #fbe4d6ee;
       border: 2px solid #8a2557;
@@ -99,23 +97,48 @@
       11% { transform: scale(0.98) rotate(2deg);}
       16% { transform: scale(1.04) rotate(-7deg);}
     }
-    .spin-brownie-btn svg { width: 28px; height: 28px; }
-    .header-spacer { flex: 1 1 auto; min-width: 46px;}
-    .content-wrap { padding-top: 76px; } /* prevent overlap with sticky header */
-
-    /* Responsive tweaks */
+    .spin-brownie-btn svg { width: 35px; height: 35px;}
+    .header-spacer { flex: 1 1 auto; min-width: 46px; }
+    .content-wrap { padding-top: 112px; }
     @media(max-width:500px){
-      .site-header {height:52px;}
-      .header-logo img{max-height:38px;}
-      .spin-brownie-btn,.header-instagram a{width:32px;height:32px;}
-      .spin-brownie-btn svg, .header-instagram svg {width:19px;height:19px;}
+      .site-header {height:70px;}
+      .header-logo {height:70px;}
+      .header-logo img{max-height:45px;}
+      .header-instagram a, .spin-brownie-btn {width:37px;height:37px;}
+      .header-instagram svg, .spin-brownie-btn svg {width:21px;height:21px;}
+      .content-wrap {padding-top:70px;}
+    }
+    .main-image-hero img {
+      width:100%; max-width:600px; display:block;
+      margin: 1.2em auto 1em auto;
+      border-radius:1.1em; box-shadow:0 3px 24px #b43c7022;
     }
 
-    /* ...rest of your prior CSS for modal, wheel, forms, etc (unchanged) ... */
-    .main-image-hero img {width:100%;max-width:600px;display:block;margin:1.2em auto 1em auto;border-radius:1.1em;box-shadow:0 3px 24px #b43c7022;}
-    .modal-backdrop { /* ... exactly as you had before ... */ }
-    .modal { /* ... as before ... */ }
-    /* ... (rest of wheel/animation/content CSS omitted for brevity, paste as in your previous working version!) ... */
+    /* Only blur main-content, NOT modal! */
+    .page-blur {
+      filter: blur(1.45px) brightness(0.98);
+      pointer-events: none;
+      user-select: none;
+    }
+    .modal-backdrop {
+      position: fixed; z-index: 1100; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(90,17,54,0.14);
+      backdrop-filter: blur(1.4px) brightness(0.97);
+      transition: backdrop-filter 0.3s;
+    }
+    .modal {
+      position: fixed; z-index: 1204; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      min-width: 340px; max-width: 99vw; background: #fff;
+      border-radius: 1.18rem; box-shadow: 0 12px 30px #b43c7014;
+      padding: 2rem 1.06rem 2rem 1.06rem; text-align: center; display: flex; flex-direction: column; align-items: center;
+      animation: popIn 0.27s;
+    }
+    @keyframes popIn { from { transform: translate(-50%, -43%) scale(0.96); opacity: 0.36;} to { transform: translate(-50%, -50%) scale(1); opacity: 1;}}
+    .modal-close { position: absolute; top: .77rem; right: 1.07rem; font-size: 2rem; font-weight: 900; color: var(--accent); background: transparent; border: none; cursor: pointer; }
+    .modal-close:hover { color: var(--primary);}
+    .spin-title { letter-spacing: 0.1em; font-weight: 800; color: var(--primary); font-size: 1.19rem; margin-bottom: 1.09rem; }
+    .spin-form { display: flex; flex-direction: column; gap: 1em; margin-bottom: 0.7em; width: 95%; max-width:320px;}
+    .spin-form input { font-size: 1rem; padding: 0.75rem; border-radius: .7rem; border: 1.1px solid var(--accent); background: #fff; color: var(--text);}
+    .spin-form button { background: var(--primary); color: #fff; border: none; border-radius: 1rem; font-weight: 700; font-size: 1.13rem; padding: 0.79rem 1.2rem; margin-top: .17em; cursor:pointer;}
     .spin-box { width: 340px; height: 340px; position: relative; margin: 1.23em auto;}
     .spin-arrow-right { position: absolute; top: 50%; right: -62px; transform: translateY(-50%); z-index: 2; display: flex; align-items: center; }
     .spin-arrow-right svg { width: 64px; height: 50px;}
@@ -124,10 +147,17 @@
       .spin-arrow-right { right: -32px; }
       .spin-arrow-right svg { width: 32px; height: 26px; }
     }
-    .wheel-canvas {
-      width: 100%; height: 100%; border-radius: 50%; background: #fff; box-shadow: 0 2px 11px #b43c7033; display: block;
-    }
-    /* ... (rest unchanged) ... */
+    .wheel-canvas { width: 100%; height: 100%; border-radius: 50%; background: #fff; box-shadow: 0 2px 11px #b43c7033; display: block;}
+    .spin-action-btn { background: var(--primary); color: #fff; border: none; outline: none; font-size: 1.09rem; font-weight: 700; padding: 0.94rem 2.12rem; border-radius: 2.1rem; cursor: pointer; margin-top: 1.02rem; transition: background 0.13s; letter-spacing: 0.04em; display: inline-block; }
+    .spin-action-btn:disabled { opacity: 0.7; cursor: initial; }
+    .spin-action-btn:active, .spin-action-btn:hover { background: var(--accent);}
+    .spin-result-msg { margin-top: 1.1rem; background: var(--accent); color: #fff; font-size: 1.22rem; font-weight: 900; padding: 1.09rem 0.7rem; border-radius: 0.94rem; box-shadow: 0 4px 11px #b43c701b;}
+    .error-msg { color: #d02040; font-weight: 700; background:#fff6f6; margin-top:.9rem; border-radius:.7em; padding:0.7em 1em;}
+    .intro, .cart-videos-section { max-width: 500px; margin: 2rem auto 0 auto; text-align: center; }
+    .insta-btn { display: flex; align-items: center; justify-content: center; background: #fff; color: var(--primary); border: 2px solid var(--primary); padding: 0.88rem 1.2rem; margin: 2.2rem auto 0rem auto; border-radius: 2.1rem; font-size: 1.1rem; font-weight: 700; width: fit-content;}
+    .insta-btn svg { height: 1.2em; width: 1.2em; fill: currentColor; }
+    .insta-btn:hover { background: var(--primary); color: #fff;}
+    footer { text-align: center; color: var(--primary); padding: 2.1rem 0 1.1rem 0; font-size: 1rem;}
   </style>
 </head>
 <body>
@@ -135,7 +165,6 @@
   <header class="site-header">
     <div class="header-instagram">
       <a href="https://instagram.com/thebrownico" target="_blank" aria-label="Instagram">
-        <!-- Instagram SVG icon -->
         <svg viewBox="0 0 448 512" fill="currentColor">
           <path d="M224,202.66A53.34,53.34,0,1,0,277.34,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.37-30.37c-21-8.21-71-6.36-94.34-6.36s-73.39-1.85-94.34,6.36a54,54,0,0,0-30.37,30.37c-8.21,21-6.36,71-6.36,94.34s-1.85,73.39,6.36,94.34a54,54,0,0,0,30.37,30.37c21,8.21,71,6.36,94.34,6.36s73.39,1.85,94.34-6.36a54,54,0,0,0,30.37-30.37c8.21-21,6.36-71,6.36-94.34S356.92,182.7,348.71,161.71ZM224,338a82,82,0,1,1,82-82A82,82,0,0,1,224,338Zm85.4-148.61a19.2,19.2,0,1,1,19.2-19.2A19.19,19.19,0,0,1,309.4,189.39Z"/>
         </svg>
@@ -147,7 +176,6 @@
     <div class="header-spacer"></div>
     <div class="header-spin">
       <button class="spin-brownie-btn" id="spin-brownie-btn" title="Spin &amp; Win!">
-        <!-- Brownie with ice cream SVG -->
         <svg viewBox="0 0 64 64">
           <rect x="11" y="34" width="42" height="13" rx="4" fill="#774438" stroke="#552a16" stroke-width="2"/>
           <path d="M21 35Q23 33, 25 35" stroke="#a77a5b" stroke-width="2" fill="none"/>
@@ -159,34 +187,209 @@
       </button>
     </div>
   </header>
-  <div class="content-wrap">
-    <!-- Main Image Banner -->
-    <section class="main-image-hero">
-      <img src="main.jpg" alt="Brownico Sizzling Brownie Banner" />
-    </section>
-    <section class="intro">
-      <h1>Brownico — Melting Hearts</h1>
-      <p>
-        What started as a humble brownie cart, sharing smiles on street corners, became a local favourite. Thanks to your love, Brownico now has its own cozy shop, but our mission is still the same: <b>melting hearts, one brownie at a time</b>.
-      </p>
-    </section>
-    <section class="cart-videos-section">
-      <h2>Our Origin Cart Videos</h2>
-      <div class="cart-videos-placeholder">Cart journey videos coming soon...</div>
-    </section>
-    <footer>Made with ❤️ by Brownico</footer>
+  <div id="main-content">
+    <div class="content-wrap">
+      <section class="main-image-hero">
+        <img src="main.jpg" alt="Brownico Sizzling Brownie Banner" />
+      </section>
+      <section class="intro">
+        <h1>Brownico — Melting Hearts</h1>
+        <p>
+          What started as a humble brownie cart, sharing smiles on street corners, became a local favourite. Thanks to your love, Brownico now has its own cozy shop, but our mission is still the same: <b>melting hearts, one brownie at a time</b>.
+        </p>
+      </section>
+      <section class="cart-videos-section">
+        <h2>Our Origin Cart Videos</h2>
+        <div class="cart-videos-placeholder">Cart journey videos coming soon...</div>
+      </section>
+      <footer>Made with ❤️ by Brownico</footer>
+    </div>
   </div>
-  <!-- Modal and Spin logic ... (unchanged, just as in prior code) ... -->
   <div id="modal-backdrop" class="modal-backdrop" style="display: none"></div>
   <div id="spin-modal" class="modal" style="display: none">
     <button class="modal-close" id="close-modal-btn" aria-label="Close spin modal">&times;</button>
     <div id="spin-modal-content"></div>
   </div>
-  <!-- Paste here your existing JS for wheel, modal, spin logic, and name/number validation -->
   <script>
-    // ...PASTE from your latest working spin wheel + modal JS code here...
-    // (unchanged — only the header layout is updated)
-    // See previous completions for the complete working JS.
+    // --- Spin prizes and logic ---
+    const wheelSectors = [
+      { label: "BOGO", color: "#FFE082" },
+      { label: "10%", color: "#AD93C6" },
+      { label: "20%", color: "#F9B384" },
+      { label: "30%", color: "#6C5B7B" },
+      { label: "40%", color: "#F67280" },
+    ];
+    const sectorProbabilities = [0.1, 0.4, 0.3, 0.2, 0.1];
+
+    function getSpinMemory() {
+      try { return JSON.parse(localStorage.getItem('brownico_spin_users')) || {}; }
+      catch { return {}; }
+    }
+    function saveSpinMemory(obj) {
+      localStorage.setItem('brownico_spin_users', JSON.stringify(obj));
+    }
+    function setLastSpinUser(details) {
+      localStorage.setItem('brownico_spin_last', JSON.stringify(details));
+    }
+    function getLastSpinUser() {
+      let d = localStorage.getItem('brownico_spin_last');
+      if(!d) return null;
+      try{ return JSON.parse(d); }catch{return null;}
+    }
+
+    const spinBtn = document.getElementById("spin-brownie-btn");
+    const modal = document.getElementById("spin-modal");
+    const modalContent = document.getElementById("spin-modal-content");
+    const modalBackdrop = document.getElementById("modal-backdrop");
+    const closeBtn = document.getElementById("close-modal-btn");
+    const mainContent = document.getElementById("main-content");
+    spinBtn.onclick = showModal;
+    closeBtn.onclick = closeModal;
+    modalBackdrop.onclick = closeModal;
+
+    function showModal() {
+      const last = getLastSpinUser();
+      if(last && last.name && last.mobile) {
+        showResult(last);
+      } else {
+        showForm();
+      }
+      modal.style.display = "";
+      modalBackdrop.style.display = "";
+      mainContent.classList.add("page-blur");
+    }
+    function closeModal() {
+      modal.style.display = "none";
+      modalBackdrop.style.display = "none";
+      mainContent.classList.remove("page-blur");
+      modalContent.innerHTML = "";
+    }
+    function showResult(user) {
+      modalContent.innerHTML = `
+        <div class="spin-title">Your Spin Reward</div>
+        <div class="spin-result-msg" style="font-size:1.16rem;">
+          🎉 <b>Congrats ${user.name}!</b><br>
+          You won ${wheelSectors[user.prize].label}!
+        </div>
+        <button class="spin-action-btn" style="margin-top:1.2em;" onclick="respinPrompt()">Spin with another number</button>
+      `;
+    }
+    window.respinPrompt = function() {
+      modalContent.innerHTML = "";
+      showForm();
+    };
+    function showForm(errorMsg) {
+      modalContent.innerHTML = `
+        <div class="spin-title">Spin &amp; Win Sweet Prizes!</div>
+        <form class="spin-form" id="spin-user-form" autocomplete="off">
+          <input type="text" id="spin-name" name="name" required maxlength="18" placeholder="Your Name" />
+          <input type="tel" id="spin-mobile" name="mobile" pattern="[0-9]{8,14}" maxlength="14" required placeholder="Mobile Number" />
+          <button type="submit">Continue</button>
+        </form>
+        ${errorMsg ? `<div class="error-msg">${errorMsg}</div>` : ""}
+      `;
+      document.getElementById("spin-user-form").onsubmit = function(e) {
+        e.preventDefault();
+        const name = document.getElementById("spin-name").value.trim();
+        const mobile = document.getElementById("spin-mobile").value.trim();
+        if(!name || !mobile) return;
+        const spins = getSpinMemory();
+        if(spins[mobile]){
+          let oldUser = {name, mobile, prize: spins[mobile]};
+          setLastSpinUser(oldUser);
+          showForm("This mobile number has already spun and won. Please use another number or see your reward above.");
+        } else {
+          showWheel(name, mobile);
+        }
+      }
+    }
+    function showWheel(name, mobile) {
+      modalContent.innerHTML = `
+        <div class="spin-title">Spin &amp; Win Sweet Prizes!</div>
+        <div class="spin-box">
+          <div class="spin-arrow-right">
+            <svg viewBox="0 0 64 50">
+              <polygon points="2,25 54,6 54,44" fill="#b43c70" />
+              <polygon points="13,25 45,15 45,35" fill="#fff176" />
+            </svg>
+          </div>
+          <canvas id="wheel-canvas" width="340" height="340" class="wheel-canvas"></canvas>
+        </div>
+        <button class="spin-action-btn" id="spin-once-btn">SPIN</button>
+        <div id="spin-result" class="spin-result-msg" style="display:none;"></div>
+      `;
+      drawWheel();
+      document.getElementById("spin-once-btn").onclick = function(){ handleSpin(name, mobile); };
+    }
+    function drawWheel(currentRotation=0, highlightIdx=null) {
+      const canvas = document.getElementById("wheel-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, 340, 340);
+      const N = wheelSectors.length, R = 160, cx = 170, cy = 170;
+      const segAngle = (2 * Math.PI) / N;
+      let angleOffset = currentRotation;
+      for (let i = 0; i < N; ++i) {
+        let start = angleOffset + i * segAngle, end = angleOffset + (i + 1) * segAngle;
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, R, start, end); ctx.closePath();
+        ctx.fillStyle = highlightIdx === i ? "#FFFDEB" : wheelSectors[i].color;
+        ctx.fill();
+        ctx.strokeStyle = "#fff"; ctx.lineWidth = 5; ctx.stroke();
+        ctx.save(); ctx.translate(cx, cy);
+        ctx.rotate(start + segAngle / 2);
+        ctx.font = "bold 1.31rem Nunito";
+        ctx.fillStyle = "#551a35";
+        ctx.textAlign = "center";
+        ctx.fillText(wheelSectors[i].label, 98, 0);
+        ctx.restore();
+      }
+      ctx.beginPath(); ctx.arc(cx, cy, 48, 0, 2 * Math.PI); ctx.fillStyle = "#fff"; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, 22, 0, 2 * Math.PI); ctx.fillStyle = "#b43c70"; ctx.fill();
+    }
+    function strongEaseOut(t) { return 1 - Math.pow(1 - t, 5); }
+    function weightedIndex(weights) {
+      const r = Math.random();
+      let sum = 0;
+      for (let i = 0; i < weights.length; i++) {
+        sum += weights[i];
+        if (r < sum) return i;
+      }
+      return weights.length - 1;
+    }
+    function handleSpin(name, mobile) {
+      const btn = document.getElementById("spin-once-btn");
+      btn.disabled = true; btn.innerText = "Spinning...";
+      const N = wheelSectors.length, segAngle = 360 / N;
+      const winIdx = weightedIndex(sectorProbabilities);
+      const winDeg = (360 - winIdx * segAngle - segAngle / 2) % 360;
+      const totalRot = 7 * 360 + winDeg;
+      const totalDuration = 5000;
+      const frameRate = 60;
+      const totalFrames = Math.round((totalDuration / 1000) * frameRate);
+      let frame = 0;
+      function animate() {
+        const t = frame / totalFrames;
+        const easedProgress = strongEaseOut(t);
+        const currentDegree = easedProgress * totalRot;
+        drawWheel(((currentDegree * Math.PI) / 180) % (2 * Math.PI));
+        if (frame < totalFrames) {
+          frame++; requestAnimationFrame(animate);
+        } else {
+          drawWheel(((winDeg * Math.PI) / 180) % (2 * Math.PI), winIdx);
+          setTimeout(() => {
+            btn.style.display = "none";
+            document.getElementById("spin-result").style.display = "";
+            document.getElementById("spin-result").innerHTML = `🎉 <b>Congrats ${name}!</b><br>You won ${wheelSectors[winIdx].label}!`;
+            let spins = getSpinMemory();
+            spins[mobile] = winIdx;
+            saveSpinMemory(spins);
+            setLastSpinUser({ name, mobile, prize: winIdx });
+          }, 340);
+        }
+      }
+      animate();
+    }
   </script>
 </body>
 </html>
