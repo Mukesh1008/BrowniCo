@@ -1,624 +1,729 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Brownico • Melting Hearts</title>
-<link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --primary: #8a2557;
-    --accent: #b43c70;
-    --text: #551a35;
-    --header-bg: #fff;
-    --bg: #fbe4d6;
-  }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Nunito', sans-serif;
-    margin: 0; padding: 0;
-  }
-  /* Header */
-  .site-header {
-    background: var(--header-bg);
-    position: fixed;
-    top: 0; left: 0; right: 0; z-index: 1203; height: 102px;
-    display: flex; align-items: center; justify-content: space-between;
-    box-shadow: 0 2px 18px #b43c7022;
-    padding: 0 .7em;
-    border-bottom: 1px solid #fbe4d6;
-  }
-  .header-logo {
-    position: absolute; left: 50%; transform: translateX(-50%);
-    height: 102px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .header-logo img {
-    max-height: 88px; width: auto; display: block;
-  }
-  .header-instagram, .header-spin {
-    display: flex; align-items: center;
-  }
-  .header-instagram a {
-    display: inline-flex; align-items: center; justify-content: center;
-    color: #b43c70; background: #fff;
-    border: 2px solid #b43c70; border-radius: 50%;
-    width: 60px; height: 60px;
-    transition: background 0.17s, color 0.17s;
-    font-size: 1.32em;
-  }
-  .header-instagram a:hover, .header-instagram a:active {
-    background: var(--primary); color: #fff; border-color: var(--primary);
-  }
-  .header-instagram svg {
-    width: 35px; height: 35px;
-    display: block;
-  }
-  .spin-brownie-btn {
-    width: 60px; height: 60px; border-radius: 50%;
-    box-shadow: 0 3px 11px #b43c7033;
-    background: #fbe4d6ee;
-    border: 2px solid #8a2557;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: box-shadow 0.15s, transform 0.14s;
-    animation: sizzle-wobble 3.1s infinite;
-  }
-  .spin-brownie-btn:active {
-    box-shadow: 0 2px 6px #b43c7030;
-    transform: scale(0.93);
-  }
-  @keyframes sizzle-wobble {
-    0%,100% { transform: scale(1); }
-    5% { transform: scale(1.07) rotate(-8deg); }
-    11% { transform: scale(0.98) rotate(2deg); }
-    16% { transform: scale(1.04) rotate(-7deg); }
-  }
-  .spin-brownie-btn svg {
-    width: 35px; height: 35px;
-  }
-  .header-spacer {
-    flex: 1 1 auto;
-    min-width: 46px;
-  }
-  .content-wrap {
-    padding-top: 112px;
-  }
-  @media (max-width: 500px) {
-    .site-header { height: 70px; }
-    .header-logo { height: 70px; }
-    .header-logo img { max-height: 45px; }
-    .header-instagram a, .spin-brownie-btn { width: 37px; height: 37px; }
-    .header-instagram svg, .spin-brownie-btn svg { width: 21px; height: 21px; }
-    .content-wrap { padding-top: 70px; }
-  }
-  /* Hero */
-  .main-image-hero img {
-    width: 100%;
-    max-width: 600px;
-    display: block;
-    margin: 1.2em auto 1em auto;
-    border-radius: 1.1em;
-    box-shadow: 0 3px 24px #b43c7022;
-  }
-  /* Galleries */
-  .slider-section {
-    margin: 2.4em auto 2.5em auto;
-    width: 100%;
-    max-width: 1020px;
-  }
-  .gallery-title {
-    text-align: center;
-    color: var(--primary);
-    font-size: 2em;
-    font-weight: 800;
-    letter-spacing: 0.07em;
-    margin: 0 0 18px 0;
-    user-select: none;
-  }
-  .three-media-row {
-    display: flex; align-items: center; justify-content: center;
-    width: 100%; max-width: 100vw;
-    background: transparent !important;
-    min-height: 160px;
-    margin: 0 auto;
-    overflow: visible;
-    border-radius: 1.2em;
-  }
-  .img-main, .vid-main {
-    width: 60vw; max-width: 60vw; min-width: 220px; max-height: 65vh;
-    height: auto;
-    border-radius: 1.1em;
-    object-fit: contain;
-    background: #fff;
-    z-index: 2;
-    box-shadow: 0 8px 38px #b43c7015;
-    margin: 0 13px;
-    transition: box-shadow 0.16s, transform 0.2s;
-    display: block;
-    user-select: none;
-  }
-  .img-preview, .vid-preview {
-    width: 10vw; max-width: 10vw; min-width: 58px;
-    border-radius: 0.74em;
-    object-fit: cover;
-    filter: blur(1.5px);
-    opacity: 0.6;
-    background: #fff;
-    margin: 0 6px;
-    box-shadow: 0 3px 14px #b43c700d;
-    z-index: 1;
-    cursor: pointer;
-    pointer-events: auto;
-    display: block;
-    position: relative;
-    transition: filter 0.12s, opacity 0.12s, border 0.14s;
-    border: 2.3px solid transparent;
-    height: auto; max-height: none;
-    user-select: none;
-  }
-  .img-preview.left:hover, .vid-preview.left:hover,
-  .img-preview.right:hover, .vid-preview.right:hover {
-    filter: blur(3px) brightness(1.08);
-    opacity: 0.84;
-    border: 2.3px solid #b43c70;
-  }
-  @media (max-width: 900px) {
-    .img-main, .vid-main { width: 72vw; max-width: 72vw; }
-    .img-preview, .vid-preview { width: 13vw; max-width: 13vw; }
-  }
-  @media (max-width: 600px) {
-    .img-main, .vid-main { min-width: 100px; }
-    .img-preview, .vid-preview { min-width: 32px; }
-    .three-media-row { min-height: 68px; }
-  }
-  /* Modal styles */
-  .modal-backdrop {
-    position: fixed; z-index: 1100; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(90,17,54,0.14); backdrop-filter: blur(1.4px) brightness(0.97);
-    transition: backdrop-filter 0.3s;
-  }
-  .modal {
-    position: fixed; z-index: 1204; top: 50%; left: 50%; 
-    transform: translate(-50%, -50%);
-    min-width: 340px; max-width: 99vw;
-    background: #fff; border-radius: 1.18rem;
-    box-shadow: 0 12px 30px #b43c7014;
-    padding: 2rem 1.5rem 2rem 1.5rem;
-    text-align: center;
-    display: flex; flex-direction: column; align-items: center;
-    animation: popIn 0.27s;
-    user-select: none;
-  }
-  @keyframes popIn {
-    from { transform: translate(-50%, -43%) scale(0.96); opacity: 0.36; }
-    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  }
-  .modal-close {
-    position: absolute; top: 0.77rem; right: 1.07rem;
-    font-size: 2rem; font-weight: 900; color: var(--accent);
-    background: transparent; border: none; cursor: pointer;
-    user-select: none;
-  }
-  .modal-close:hover {
-    color: var(--primary);
-  }
-  .spin-title {
-    margin-bottom: 1.4rem;
-    font-size: 1.3rem;
-    font-weight: 900;
-    color: var(--primary);
-    letter-spacing: 0.13em;
-  }
-  .spin-action-btn {
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    color: #fff;
-    border: none;
-    border-radius: 2rem;
-    font-weight: 800;
-    font-size: 1.15rem;
-    padding: 0.85rem 0;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(180, 60, 112, 0.4);
-    transition: background 0.25s, transform 0.13s;
-    user-select: none;
-    letter-spacing: 0.06em;
-    width: 220px;
-    margin: 0 auto;
-    display: block;
-  }
-  .spin-action-btn:hover,
-  .spin-action-btn:focus {
-    background: linear-gradient(90deg, var(--accent), var(--primary));
-    outline: none;
-  }
-  .spin-action-btn:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 7px rgba(180, 60, 112, 0.7);
-  }
-  .spin-result-msg {
-    background: var(--accent);
-    color: #fff;
-    font-size: 1.22rem;
-    font-weight: 900;
-    padding: 1.1rem 1rem;
-    border-radius: 0.94rem;
-    box-shadow: 0 4px 12px rgba(180, 60, 112, 0.3);
-    margin-top: 1.05rem;
-    text-align: center;
-    user-select: none;
-  }
-  .page-blur {
-    filter: blur(1.45px) brightness(0.98);
-    pointer-events: none;
-    user-select: none;
-  }
-  .intro {
-    max-width: 500px;
-    margin: 2rem auto 0 auto;
-    text-align: center;
-  }
-  footer {
-    text-align: center;
-    color: var(--primary);
-    padding: 2.1rem 0 1.1rem 0;
-    font-size: 1rem;
-    user-select: none;
-  }
-  .spin-box {
-    width: 340px;
-    height: 340px;
-    position: relative;
-    margin: 1.23em auto;
-    user-select: none;
-  }
-  .spin-arrow-right {
-    position: absolute;
-    top: 50%; right: -62px;
-    transform: translateY(-50%);
-    z-index: 2;
-    display: flex; align-items: center;
-  }
-  .spin-arrow-right svg {
-    width: 64px; height: 50px;
-  }
-  @media (max-width: 500px) {
-    .spin-box {
-      width: 200px; height: 200px;
-    }
-    .spin-arrow-right {
-      right: -32px;
-    }
-    .spin-arrow-right svg {
-      width: 32px; height: 26px;
-    }
-  }
-  .wheel-canvas {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 2px 11px #b43c7033;
-    display: block;
-    user-select: none;
-  }
-</style>
-</head>
-<body>
-<header class="site-header">
-  <div class="header-instagram">
-    <a href="https://instagram.com/thebrownico" target="_blank" aria-label="Instagram" rel="noopener noreferrer" >
-      <svg viewBox="0 0 448 512" fill="currentColor">
-        <path d="M224,202.66A53.34,53.34,0,1,0,277.34,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.37-30.37c-21-8.21-71-6.36-94.34-6.36s-73.39-1.85-94.34,6.36a54,54,0,0,0-30.37,30.37c-8.21,21-6.36,71-6.36,94.34s-1.85,73.39,6.36,94.34a54,54,0,0,0,30.37,30.37c21,8.21,71,6.36,94.34,6.36s73.39,1.85,94.34-6.36a54,54,0,0,0,30.37-30.37c8.21-21,6.36-71,6.36-94.34S356.92,182.7,348.71,161.71ZM224,338a82,82,0,1,1,82-82A82,82,0,0,1,224,338Zm85.4-148.61a19.2,19.2,0,1,1,19.2-19.2A19.19,19.19,0,0,1,309.4,189.39Z"/>
-      </svg>
-    </a>
-  </div>
-  <div class="header-logo">
-    <img src="logo.png" alt="Brownico Logo" loading="lazy"/>
-  </div>
-  <div class="header-spacer"></div>
-  <div class="header-spin">
-    <button class="spin-brownie-btn" id="spin-brownie-btn" title="Spin & Win!">
-      <svg viewBox="0 0 64 64">
-        <rect x="11" y="34" width="42" height="13" rx="4" fill="#774438" stroke="#552a16" stroke-width="2" />
-        <path d="M21 35Q23 33, 25 35" stroke="#a77a5b" stroke-width="2" fill="none"/>
-        <path d="M33 35Q36 32, 38 35" stroke="#a77a5b" stroke-width="2" fill="none"/>
-        <path d="M45 35Q47 33, 49 35" stroke="#a77a5b" stroke-width="2" fill="none"/>
-        <ellipse cx="32" cy="28" rx="13" ry="8" fill="#fff8e7" stroke="#dea45a" stroke-width="2"/>
-        <path d="M20 29Q28 38 44 29" stroke="#845141" stroke-width="3" fill="none"/>
-      </svg>
-    </button>
-  </div>
-</header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अंबिका मैचिंग सेंटर | सब कुछ एक ही छत के नीचे | अंकलेश्वर</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Clean Modern Hindi + Minimal Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<div id="main-content">
-  <div class="content-wrap">
-    <section class="main-image-hero">
-      <img src="main.jpg" alt="Brownico Sizzling Brownie Banner" />
-    </section>
-    <section class="intro">
-      <h1>Brownico — Melting Hearts</h1>
-      <p>What started as a humble brownie cart, sharing smiles on street corners, became a local favourite. Thanks to your love, Brownico now has its own cozy shop, but our mission is still the same: <b>melting hearts, one brownie at a time</b>.</p>
-    </section>
-
-    <!-- Image Gallery -->
-    <section class="slider-section" id="image-gallery">
-      <h2 class="gallery-title">Image Gallery</h2>
-      <div class="three-media-row image-row">
-        <img src="" class="img-preview left" alt="Previous" />
-        <img src="" class="img-main" alt="Current" />
-        <img src="" class="img-preview right" alt="Next" />
-      </div>
-    </section>
-
-    <!-- Video Gallery -->
-    <section class="slider-section" id="video-gallery">
-      <h2 class="gallery-title">Video Gallery</h2>
-      <div class="three-media-row video-row">
-        <video class="vid-preview left" src="" muted autoplay loop playsinline tabindex="-1"></video>
-        <video class="vid-main" src="" muted autoplay playsinline tabindex="0"></video>
-        <video class="vid-preview right" src="" muted autoplay loop playsinline tabindex="-1"></video>
-      </div>
-    </section>
-
-    <footer>Made with ❤️ by Brownico</footer>
-  </div>
-</div>
-
-<!-- Spin & Win Modal -->
-<div id="modal-backdrop" class="modal-backdrop" style="display:none;"></div>
-<div id="spin-modal" class="modal" style="display:none;">
-  <button class="modal-close" id="close-modal-btn" aria-label="Close spin modal">&times;</button>
-  <div id="spin-modal-content"></div>
-</div>
-
-<script>
-  // Image Gallery
-  const imageFiles = ['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg','images/6.jpg','images/7.jpg','images/8.jpg'];
-  let imgIdx = 0;
-  function setThreeImages(idx) {
-    const prevIdx = (idx-1+imageFiles.length)%imageFiles.length;
-    const nextIdx = (idx+1)%imageFiles.length;
-    const prev = document.querySelector('.image-row .img-preview.left');
-    const main = document.querySelector('.image-row .img-main');
-    const next = document.querySelector('.image-row .img-preview.right');
-    prev.src = imageFiles[prevIdx];
-    main.src = imageFiles[idx];
-    next.src = imageFiles[nextIdx];
-    main.onload = () => {
-      let mainH = main.naturalHeight || main.offsetHeight || 400;
-      prev.style.height = next.style.height = (main.offsetHeight*0.8 || mainH*0.8 || 200) + "px";
-      prev.style.maxHeight = next.style.maxHeight = "";
-      main.style.height = "";
-    };
-  }
-  setThreeImages(imgIdx);
-  document.querySelector('.image-row .img-preview.left').onclick = () => setThreeImages(imgIdx=(imgIdx-1+imageFiles.length)%imageFiles.length);
-  document.querySelector('.image-row .img-preview.right').onclick = () => setThreeImages(imgIdx=(imgIdx+1)%imageFiles.length);
-  setInterval(() => setThreeImages(imgIdx=(imgIdx+1)%imageFiles.length), 3000);
-
-  // Video Gallery
-  const videoFiles = ['videos/11.mp4','videos/22.mp4','videos/33.mp4','videos/44.mp4','videos/55.mp4'];
-  let vidIdx = 0;
-  function setThreeVids(idx) {
-    const prev = document.querySelector('.video-row .vid-preview.left');
-    const main = document.querySelector('.video-row .vid-main');
-    const next = document.querySelector('.video-row .vid-preview.right');
-    const prevIdx = (idx-1+videoFiles.length)%videoFiles.length;
-    const nextIdx = (idx+1)%videoFiles.length;
-    prev.src = videoFiles[prevIdx];
-    main.src = videoFiles[idx];
-    next.src = videoFiles[nextIdx];
-    main.onloadedmetadata = () => {
-      let mainH = main.videoHeight || main.offsetHeight || 400;
-      prev.style.height = next.style.height = (main.offsetHeight*0.8 || mainH*0.8 || 200) + "px";
-      prev.style.maxHeight = next.style.maxHeight = "";
-      main.style.height = "";
-    };
-  }
-  setThreeVids(vidIdx);
-  document.querySelector('.video-row .vid-preview.left').onclick = () => setThreeVids(vidIdx=(vidIdx-1+videoFiles.length)%videoFiles.length);
-  document.querySelector('.video-row .vid-preview.right').onclick = () => setThreeVids(vidIdx=(vidIdx+1)%videoFiles.length);
-  document.querySelector('.video-row .vid-main').onended = () => setThreeVids(vidIdx=(vidIdx+1)%videoFiles.length);
-  document.querySelector('.video-row .vid-main').onclick = function() { this.muted = !this.muted; };
-
-  // Spin & Win
-  const wheelSectors = [
-    { label: "BOGO", color: "#FFE082" },
-    { label: "10%", color: "#AD93C6" },
-    { label: "20%", color: "#F9B384" },
-    { label: "30%", color: "#6C5B7B" },
-    { label: "40%", color: "#F67280" },
-  ];
-  const sectorProbabilities = [0.1, 0.4, 0.3, 0.2, 0.1];
-
-  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPetYhSN7cjEgFaVhPgoOTs6KUm1-EPix6P90zhqM61ZS_MBuLoUsHsWmyYBLi-1BH/exec';
-
-  const spinBtn = document.getElementById("spin-brownie-btn");
-  const modal = document.getElementById("spin-modal");
-  const modalContent = document.getElementById("spin-modal-content");
-  const modalBackdrop = document.getElementById("modal-backdrop");
-  const closeBtn = document.getElementById("close-modal-btn");
-  const mainContent = document.getElementById("main-content");
-
-  const hasSpunKey = "brownico_last_spin_time";
-  const storedPrizeKey = "brownico_spin_prize";
-  const spinCooldownMs = 2 * 60 * 60 * 1000; // 2 hours cooldown
-
-  spinBtn.onclick = function() {
-    const lastSpin = localStorage.getItem(hasSpunKey);
-    const storedPrize = localStorage.getItem(storedPrizeKey);
-    const now = Date.now();
-
-    if (lastSpin && storedPrize) {
-      const elapsed = now - parseInt(lastSpin, 10);
-      if (elapsed < spinCooldownMs) {
-        // Show reward and remaining time modal
-        showModal();
-        const remainingMs = spinCooldownMs - elapsed;
-        const remainingMinutes = Math.floor(remainingMs / 60000);
-        modalContent.innerHTML = `
-          <div class="spin-title">Your Spin Reward</div>
-          <div class="spin-result-msg" style="font-size:1.16rem;">
-             <b>Congrats!</b><br>
-            You already spun and won <span style="font-size:1.23em;color:#ffe082;background:#b43c70;padding:0.05em 0.5em;border-radius:0.9em;">${storedPrize}</span>!<br>
-           
-          </div>
-        `;
-        return;
-      } else {
-        // Cooldown expired, clear localStorage data for spin
-        localStorage.removeItem(hasSpunKey);
-        localStorage.removeItem(storedPrizeKey);
-      }
-    }
-    // No prior spin or cooldown expired - allow spin now
-    showModal();
-    showWheel();
-  };
-
-  closeBtn.onclick = closeModal;
-  modalBackdrop.onclick = closeModal;
-
-  function showModal() {
-    modal.style.display = "";
-    modalBackdrop.style.display = "";
-    if(mainContent) mainContent.classList.add("page-blur");
-  }
-  function closeModal() {
-    modal.style.display = "none";
-    modalBackdrop.style.display = "none";
-    if(mainContent) mainContent.classList.remove("page-blur");
-    modalContent.innerHTML = "";
-  }
-
-  function showWheel() {
-    // Generate a simple client ID once
-    let userID = localStorage.getItem("brownico_user_id");
-    if (!userID) {
-      userID = 'user-' + Math.random().toString(36).substr(2,9);
-      localStorage.setItem("brownico_user_id", userID);
-    }
-
-    modalContent.innerHTML = `
-      <div class="spin-title">Spin &amp; Win Sweet Prizes!</div>
-      <div class="spin-box">
-        <div class="spin-arrow-right">
-          <svg viewBox="0 0 64 50">
-            <polygon points="2,25 54,6 54,44" fill="#b43c70"></polygon>
-            <polygon points="13,25 45,15 45,35" fill="#fff176"></polygon>
-          </svg>
-        </div>
-        <canvas id="wheel-canvas" width="340" height="340" class="wheel-canvas"></canvas>
-      </div>
-      <button class="spin-action-btn" id="spin-once-btn">SPIN</button>
-      <div id="spin-result" class="spin-result-msg" style="display:none;"></div>
-    `;
-    drawWheel();
-
-    const btn = document.getElementById("spin-once-btn");
-    btn.onclick = async function() {
-      btn.disabled = true;
-      btn.innerText = "Spinning...";
-
-      const N = wheelSectors.length;
-      const segAngle = 360 / N;
-      const winIdx = weightedIndex(sectorProbabilities);
-      const winDeg = (360 - winIdx * segAngle - segAngle / 2) % 360;
-      const totalRot = 7 * 360 + winDeg;
-      const totalDuration = 5000;
-      const frameRate = 60;
-      const totalFrames = Math.round((totalDuration / 1000) * frameRate);
-      let frame = 0;
-
-      function animate() {
-        const t = frame / totalFrames;
-        const easedProgress = strongEaseOut(t);
-        const currentDegree = easedProgress * totalRot;
-        drawWheel(((currentDegree * Math.PI) / 180) % (2 * Math.PI));
-        if (frame < totalFrames) {
-          frame++; requestAnimationFrame(animate);
-        } else {
-          drawWheel(((winDeg * Math.PI) / 180) % (2 * Math.PI), winIdx);
-          setTimeout(async () => {
-            btn.style.display = "none";
-            document.getElementById("spin-result").style.display = "";
-            let prizeLabel = wheelSectors[winIdx].label;
-            document.getElementById("spin-result").innerHTML = `🎉 <b>Congrats!</b><br>You won ${prizeLabel}!`;
-            // Save spin timestamp and prize to localStorage for cooldown
-            localStorage.setItem(hasSpunKey, Date.now().toString());
-            localStorage.setItem(storedPrizeKey, prizeLabel);
-            // Send spin data to Google Sheets
-            try {
-              await saveSpinToSheet(userID, userID, prizeLabel);
-            } catch (e) {
-              console.error("Failed to save spin data:", e);
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            950: '#1a0407',
+                            900: '#2b070d',
+                            850: '#380a12',
+                            800: '#480d17',
+                            700: '#5c121e',
+                            600: '#731726',
+                        },
+                        gold: {
+                            100: '#faf4e1',
+                            200: '#f4e5b8',
+                            300: '#edd58f',
+                            400: '#e2be58',
+                            500: '#d4af37',
+                            600: '#b89025',
+                        }
+                    },
+                    fontFamily: {
+                        hindi: ['"Noto Sans Devanagari"', '"Poppins"', 'sans-serif'],
+                        poppins: ['"Poppins"', 'sans-serif'],
+                    }
+                }
             }
-          }, 340);
         }
-      }
-      animate();
-    };
-  }
+    </script>
 
-  async function saveSpinToSheet(name, mobile, prize) {
-    return fetch(GOOGLE_APPS_SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify({ name, mobile, prize }),
-      headers: { 'Content-Type': 'application/json' }
-    })
-    .then(r => r.json());
-  }
+    <style>
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1a0407; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 9999px; }
 
-  function drawWheel(currentRotation=0, highlightIdx=null) {
-    const canvas = document.getElementById("wheel-canvas");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, 340, 340);
-    const N = wheelSectors.length; const R = 160; const cx = 170; const cy = 170;
-    const segAngle = (2 * Math.PI) / N;
-    let angleOffset = currentRotation;
-    for(let i=0; i<N; i++){
-      let start = angleOffset + i*segAngle;
-      let end = angleOffset + (i+1)*segAngle;
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.arc(cx, cy, R, start, end);
-      ctx.closePath();
-      ctx.fillStyle = highlightIdx === i ? "#FFFDEB" : wheelSectors[i].color;
-      ctx.fill();
-      ctx.strokeStyle = "#fff";
-      ctx.lineWidth = 5;
-      ctx.stroke();
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(start + segAngle/2);
-      ctx.font = "bold 1.31rem Nunito";
-      ctx.fillStyle = "#551a35";
-      ctx.textAlign = "center";
-      ctx.fillText(wheelSectors[i].label, 98, 0);
-      ctx.restore();
-    }
-    ctx.beginPath();
-    ctx.arc(cx, cy, 48, 0, 2*Math.PI);
-    ctx.fillStyle="#fff"; ctx.fill();
-    ctx.beginPath();
-    ctx.arc(cx, cy, 22, 0, 2*Math.PI);
-    ctx.fillStyle="#b43c70"; ctx.fill();
-  }
-  function strongEaseOut(t) { return 1 - Math.pow(1 - t, 5); }
-  function weightedIndex(weights) {
-    const r = Math.random();
-    let sum = 0;
-    for(let i=0; i < weights.length; i++) {
-      sum += weights[i];
-      if(r < sum) return i;
-    }
-    return weights.length - 1;
-  }
-</script>
-</body>
-</html>
+        body {
+            background-color: #1a0407;
+            color: #f3ece4;
+            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
 
+        /* Royal Maroon Minimal Canvas */
+        .maroon-mesh {
+            background: 
+                radial-gradient(ellipse 70% 50% at 50% -10%, rgba(212, 175, 55, 0.12), transparent 70%),
+                radial-gradient(ellipse 60% 45% at 90% 50%, rgba(115, 23, 38, 0.4), transparent 65%),
+                radial-gradient(ellipse 50% 35% at 10% 85%, rgba(72, 13, 23, 0.5), transparent 70%),
+                #1a0407;
+        }
 
+        /* Glassmorphism card */
+        .glass-box {
+            background: rgba(43, 7, 13, 0.55);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
+        .glass-box:hover {
+            border-color: rgba(212, 175, 55, 0.45);
+            box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gold Gradient Text */
+        .text-gold {
+            background: linear-gradient(135deg, #ffffff 0%, #f4e5b8 35%, #d4af37 75%, #b89025 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll Progress */
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #b89025, #e2be58, #ffffff);
+            width: 0%;
+            z-index: 999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Background Particle Canvas */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="maroon-mesh min-h-screen selection:bg-gold-500 selection:text-maroon-950 font-hindi">
+
+    <!-- Scroll Progress -->
+    <div id="scrollProgress"></div>
+
+    <!-- Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Top Badge -->
+    <div class="relative z-30 border-b border-gold-500/15 py-2 px-4 text-center text-xs text-gold-200/90 bg-maroon-950/85">
+        <span class="inline-flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>2014 से अंकलेश्वर में आपकी भरोसेमंद दुकान &bull; रिटेल और होलसेल दोनों उपलब्ध</span>
+        </span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-maroon-950/80 backdrop-blur-md border-b border-gold-500/15">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 h-18 flex items-center justify-between py-3.5">
+            <!-- Brand -->
+            <a href="#home" class="flex flex-col">
+                <span class="text-xl sm:text-2xl font-bold tracking-tight text-gold">
+                    अंबिका मैचिंग सेंटर
+                </span>
+                <span class="text-[11px] text-gold-300/80 font-light tracking-wide">
+                    अंकलेश्वर, गुजरात
+                </span>
+            </a>
+
+            <!-- Menu Links -->
+            <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-stone-200">
+                <a href="#products" class="hover:text-gold-400 transition">हमारे प्रोडक्ट्स</a>
+                <a href="#order-process" class="hover:text-gold-400 transition">व्हाट्सएप ऑर्डर कैसे करें</a>
+                <a href="#reviews" class="hover:text-gold-400 transition">कस्टमर रिव्यू</a>
+                <a href="#location" class="hover:text-gold-400 transition">दुकान का पता</a>
+            </nav>
+
+            <!-- WhatsApp Action -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/919998078498?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="px-4 py-2 rounded-full text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-2 transition duration-300 shadow-md shadow-emerald-950/40">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>व्हाट्सएप पूछताछ</span>
+                </a>
+
+                <button id="mobileMenuBtn" aria-label="मेनू खोलें" class="md:hidden text-gold-300 text-lg p-1.5 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden px-6 py-4 bg-maroon-900 border-b border-gold-500/15 flex flex-col gap-3 text-xs">
+            <a href="#products" onclick="toggleMenu()" class="py-1 text-stone-200 hover:text-gold-400">हमारे प्रोडक्ट्स</a>
+            <a href="#order-process" onclick="toggleMenu()" class="py-1 text-stone-200 hover:text-gold-400">व्हाट्सएप ऑर्डर कैसे करें</a>
+            <a href="#reviews" onclick="toggleMenu()" class="py-1 text-stone-200 hover:text-gold-400">कस्टमर रिव्यू</a>
+            <a href="#location" onclick="toggleMenu()" class="py-1 text-stone-200 hover:text-gold-400">दुकान का पता</a>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="py-16 sm:py-24 px-5 sm:px-8 max-w-5xl mx-auto text-center flex flex-col items-center">
+            
+            <div class="reveal inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold-500/25 text-gold-300 text-xs font-medium mb-5 bg-maroon-900/60">
+                <i class="fa-solid fa-star text-[10px] text-gold-400"></i>
+                <span>फैब्रिक्स, मैचिंग और टेलरिंग का पूरा सामान</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="reveal text-3xl sm:text-5xl md:text-6xl font-extrabold text-gold tracking-tight mb-3">
+                अंबिका मैचिंग सेंटर
+            </h1>
+
+            <!-- Tagline -->
+            <div class="reveal">
+                <p class="text-xl sm:text-2xl md:text-3xl text-gold-100 font-semibold tracking-wide mt-1">
+                    "सब कुछ एक ही छत के नीचे"
+                </p>
+                <p class="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto mt-4 leading-relaxed font-normal">
+                    ब्लाउज और कुर्ती फैब्रिक्स, डिजाइनर लेस, फैंसी लटकन, मोती-स्टोन और टेलरिंग का सारा सामान सबसे बेहतरीन क्वालिटी और वाजिब दाम में।
+                </p>
+            </div>
+
+            <!-- CTAs -->
+            <div class="reveal flex flex-wrap items-center justify-center gap-3.5 mt-8">
+                <a href="https://wa.me/919998078498?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="px-6 py-3 rounded-full text-xs sm:text-sm font-semibold bg-gold-400 hover:bg-gold-300 text-maroon-950 shadow-lg shadow-gold-500/15 flex items-center gap-2 transition transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>व्हाट्सएप पर ऑर्डर करें</span>
+                </a>
+
+                <a href="#products" 
+                   class="px-5 py-3 rounded-full text-xs sm:text-sm font-medium border border-gold-500/30 text-gold-200 hover:border-gold-400 hover:bg-maroon-900/40 transition">
+                    <span>सामान की लिस्ट देखें</span>
+                </a>
+
+                <a href="https://maps.google.com/maps?cid=4126246766233678113" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="px-5 py-3 rounded-full text-xs sm:text-sm font-medium border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-diamond-turn-right text-xs"></i>
+                    <span>दुकान का रास्ता</span>
+                </a>
+            </div>
+
+            <!-- 4 Metrics Highlight (Featuring 400+ Shades) -->
+            <div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-3.5 mt-14 w-full text-left">
+                <!-- Highlight 1: 400+ Shades -->
+                <div class="glass-box p-4 rounded-xl border-gold-500/40 bg-maroon-900/50">
+                    <span class="text-[11px] text-gold-400 font-medium block">कलर रेंज</span>
+                    <p class="text-2xl font-bold text-white mt-0.5">400+ शेड्स</p>
+                    <p class="text-[11px] text-stone-300 mt-1">परफेक्ट और सटीक मैचिंग</p>
+                </div>
+
+                <!-- Metric 2 -->
+                <div class="glass-box p-4 rounded-xl">
+                    <span class="text-[11px] text-gold-400 font-medium block">भरोसा</span>
+                    <p class="text-2xl font-bold text-white mt-0.5">2014 से</p>
+                    <p class="text-[11px] text-stone-300 mt-1">10+ वर्षों का अनुभव</p>
+                </div>
+
+                <!-- Metric 3 -->
+                <div class="glass-box p-4 rounded-xl">
+                    <span class="text-[11px] text-gold-400 font-medium block">खरीदारी</span>
+                    <p class="text-2xl font-bold text-white mt-0.5">रिटेल व थोक</p>
+                    <p class="text-[11px] text-stone-300 mt-1">दोनों पर वाजिब रेट</p>
+                </div>
+
+                <!-- Metric 4 -->
+                <div class="glass-box p-4 rounded-xl">
+                    <span class="text-[11px] text-gold-400 font-medium block">डिलीवरी</span>
+                    <p class="text-2xl font-bold text-white mt-0.5">पार्सल सेवा</p>
+                    <p class="text-[11px] text-stone-300 mt-1">घर बैठे मंगाने की सुविधा</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCT SHOWCASE -->
+        <section id="products" class="py-18 px-5 sm:px-8 max-w-6xl mx-auto">
+            <div class="reveal text-center max-w-2xl mx-auto mb-10">
+                <span class="text-gold-400 text-xs font-semibold tracking-wider uppercase">दुकान का सामान</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1.5">
+                    हमारी दुकान पर क्या-क्या मिलता है?
+                </h2>
+                <div class="w-10 h-0.5 bg-gold-400 mx-auto my-3"></div>
+                <p class="text-stone-300 text-xs sm:text-sm font-normal">
+                    यह कोई ऑनलाइन कार्ट नहीं है, बल्कि गैलरी है। आप व्हाट्सएप पर फोटो देखकर अपनी पसंद का सामान मंगवा सकते हैं।
+                </p>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-6" id="filterNav">
+                    <button onclick="applyFilter('all')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-gold-400 text-maroon-950 transition">सभी सामान</button>
+                    <button onclick="applyFilter('fabrics')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-gold-500/20 text-stone-300 hover:text-white transition">फैब्रिक्स व कपड़े</button>
+                    <button onclick="applyFilter('lace-latkan')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-gold-500/20 text-stone-300 hover:text-white transition">लेस और लटकन</button>
+                    <button onclick="applyFilter('craft-moti')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-gold-500/20 text-stone-300 hover:text-white transition">मोती, कुंदन व स्टोन</button>
+                    <button onclick="applyFilter('tailoring')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-gold-500/20 text-stone-300 hover:text-white transition">टेलरिंग का सारा सामान</button>
+                </div>
+            </div>
+
+            <!-- Product Cards with 3D Tilt -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="productGrid">
+                
+                <!-- 1: Blouse & Chaniya Choli Fabrics -->
+                <div class="product-item reveal glass-box rounded-2xl p-5 relative flex flex-col justify-between" data-category="fabrics">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] text-gold-300 border border-gold-500/25 px-2.5 py-0.5 rounded-full">कपड़े व फैब्रिक्स</span>
+                            <i class="fa-solid fa-shirt text-gold-400/70 text-sm"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">ब्लाउज और चनिया चोली फैब्रिक्स</h3>
+                        <p class="text-xs text-stone-300 leading-relaxed mb-4">
+                            बनारसी ब्रोकेड, सिल्क, नेट, हेवी वेलवेट, ऑर्गेन्ज़ा, कॉटन सिल्क और पारंपरिक पटोला प्रिंट्स का शानदार कलेक्शन।
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-3 text-[11px]">
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">ब्रोकेड व सिल्क</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">पटोला व वेलवेट</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-gold-300 border border-gold-500/20">400+ शेड्स</span>
+                        </div>
+                        <div class="pt-3 border-t border-gold-500/15 flex items-center justify-between text-[11px] text-stone-400">
+                            <span>कट पीस व पूरा थान</span>
+                            <span class="text-gold-300">रिटेल व होलसेल</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2: Kurti & Gown Materials -->
+                <div class="product-item reveal glass-box rounded-2xl p-5 relative flex flex-col justify-between" data-category="fabrics">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] text-gold-300 border border-gold-500/25 px-2.5 py-0.5 rounded-full">ड्रेस मटेरियल्स</span>
+                            <i class="fa-solid fa-wand-magic-sparkles text-gold-400/70 text-sm"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">कुर्ती और गाउन मटेरियल्स</h3>
+                        <p class="text-xs text-stone-300 leading-relaxed mb-4">
+                            फॉक्स जॉर्जेट, भारी रेयॉन, शुद्ध कॉटन, डिजिटल प्रिंटेड ऑर्गेन्ज़ा, शिफॉन और क्रेप का रनिंग कपड़ा मीटर के हिसाब से।
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-3 text-[11px]">
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">जॉर्जेट व रेयॉन</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">प्योर कॉटन</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">डिजिटल प्रिंट्स</span>
+                        </div>
+                        <div class="pt-3 border-t border-gold-500/15 flex items-center justify-between text-[11px] text-stone-400">
+                            <span>पक्के रंग</span>
+                            <span class="text-gold-300">मीटर अनुसार उपलब्ध</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3: Designer Laces & Borders -->
+                <div class="product-item reveal glass-box rounded-2xl p-5 relative flex flex-col justify-between" data-category="lace-latkan">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] text-gold-300 border border-gold-500/25 px-2.5 py-0.5 rounded-full">लेस और बॉर्डर</span>
+                            <i class="fa-solid fa-ribbon text-gold-400/70 text-sm"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">डिजाइनर लेस और गोटा पट्टी</h3>
+                        <p class="text-xs text-stone-300 leading-relaxed mb-4">
+                            जरी बॉर्डर, असली मिरर वर्क, गोटा पट्टी रोल्स, कटवर्क लेसेस, वेलवेट बॉर्डर, पॉम-पॉम और क्रोशिया की सैकड़ों किस्में।
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-3 text-[11px]">
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">गोटा पट्टी रोल</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">कांच मिरर वर्क</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">जरी कटवर्क</span>
+                        </div>
+                        <div class="pt-3 border-t border-gold-500/15 flex items-center justify-between text-[11px] text-stone-400">
+                            <span>सैकड़ों नई डिजाइन</span>
+                            <span class="text-gold-```html
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अंबिका मैचिंग सेंटर | सब कुछ एक ही छत के नीचे | अंकलेश्वर</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Clean Modern Hindi + Minimal Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            950: '#1a0407',
+                            900: '#2b070d',
+                            850: '#380a12',
+                            800: '#480d17',
+                            700: '#5c121e',
+                            600: '#731726',
+                        },
+                        gold: {
+                            100: '#faf4e1',
+                            200: '#f4e5b8',
+                            300: '#edd58f',
+                            400: '#e2be58',
+                            500: '#d4af37',
+                            600: '#b89025',
+                        }
+                    },
+                    fontFamily: {
+                        hindi: ['"Noto Sans Devanagari"', '"Poppins"', 'sans-serif'],
+                        poppins: ['"Poppins"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1a0407; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 9999px; }
+
+        body {
+            background-color: #1a0407;
+            color: #f3ece4;
+            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Royal Maroon Minimal Canvas */
+        .maroon-mesh {
+            background: 
+                radial-gradient(ellipse 70% 50% at 50% -10%, rgba(212, 175, 55, 0.12), transparent 70%),
+                radial-gradient(ellipse 60% 45% at 90% 50%, rgba(115, 23, 38, 0.4), transparent 65%),
+                radial-gradient(ellipse 50% 35% at 10% 85%, rgba(72, 13, 23, 0.5), transparent 70%),
+                #1a0407;
+        }
+
+        /* Glassmorphism card */
+        .glass-box {
+            background: rgba(43, 7, 13, 0.55);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-box:hover {
+            border-color: rgba(212, 175, 55, 0.45);
+            box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gold Gradient Text */
+        .text-gold {
+            background: linear-gradient(135deg, #ffffff 0%, #f4e5b8 35%, #d4af37 75%, #b89025 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll Progress */
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #b89025, #e2be58, #ffffff);
+            width: 0%;
+            z-index: 999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Background Particle Canvas */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="maroon-mesh min-h-screen selection:bg-gold-500 selection:text-maroon-950 font-hindi">
+
+    <!-- Scroll Progress -->
+    <div id="scrollProgress"></div>
+
+    <!-- Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Top Badge -->
+    <div class="relative z-30 border-b border-gold-500/15 py-2 px-4 text-center text-xs text-gold-200/90 bg-maroon-950/85">
+        <span class="inline-flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>2014 से अंकलेश्वर में आपकी भरोसेमंद दुकान &bull; रिटेल और होलसेल दोनों उपलब्ध</span>
+        </span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-maroon-950/80 backdrop-blur-md border-b border-gold-500/15">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 h-18 flex items-center justify-between py-3.5">
+            <!-- Brand -->
+            <a href="#home" class="flex flex-col">
+                <span class="text-xl sm:text-2xl font-bold tracking-tight text-gold">
+                    अंबिका मैचिंग सेंटर
+                </span>
+                <span class="text-[11px] text-gold-300/80 font-light tracking-wide">
+                    अंकलेश्वर, गुजरात
+                </span>
+            </a>
+
+            <!-- Menu Links -->
+            <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-stone-200">
+                <a href="#products" class="hover:text-gold-400 transition">हमारे प्रोडक्ट्स</a>
+                <a href="#order-process" class="hover:text-gold-400 transition">व्हाट्सएप ऑर्डर कैसे करें</a>
+                <a href="#reviews" class="hover:text-gold-400 transition">कस्टमर रिव्यू</a>
+                <a href="#location" class="hover:text-gold-400 transition">दुकान का पता</a>
+            </nav>
+
+            <!-- WhatsApp Action -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/919998078498?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="px-4 py-2 rounded-full text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-2 transition duration-300 shadow-md shadow-emerald-950/40">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>व्हाट्सएप पूछताछ</span>
+                </a>
+
+                <button id="mobileMenuBtn" aria-label="मेनू खोलें" class="md:hidden text-gold-300 text-lg p-1.5 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden px-6 py-4 bg-maroon-900 border-b border-gold-500/15 flex flex-col gap-3 text-xs">
+            <a href="#products" onclick="toggleMenu()" class="py-1 text-stone-200 hover:text-gold-400">हमारे प्रोडक्ट्स</a>
+            <a href="#order-process" onclick="toggleMenu()" class="py-1 text-stone-200 hover:text-gold-400">व्हाट्सएप ऑर्डर कैसे करें</a>
+            <a href="#reviews" onclick="toggleMenu()" class="py-1 text-stone-200 hover:text-gold-400">कस्टमर रिव्यू</a>
+            <a href="#location" onclick="toggleMenu()" class="py-1 text-stone-200 hover:text-gold-400">दुकान का पता</a>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="py-16 sm:py-24 px-5 sm:px-8 max-w-5xl mx-auto text-center flex flex-col items-center">
+            
+            <div class="reveal inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold-500/25 text-gold-300 text-xs font-medium mb-5 bg-maroon-900/60">
+                <i class="fa-solid fa-star text-[10px] text-gold-400"></i>
+                <span>फैब्रिक्स, मैचिंग और टेलरिंग का पूरा सामान</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="reveal text-3xl sm:text-5xl md:text-6xl font-extrabold text-gold tracking-tight mb-3">
+                अंबिका मैचिंग सेंटर
+            </h1>
+
+            <!-- Tagline -->
+            <div class="reveal">
+                <p class="text-xl sm:text-2xl md:text-3xl text-gold-100 font-semibold tracking-wide mt-1">
+                    "सब कुछ एक ही छत के नीचे"
+                </p>
+                <p class="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto mt-4 leading-relaxed font-normal">
+                    ब्लाउज और कुर्ती फैब्रिक्स, डिजाइनर लेस, फैंसी लटकन, मोती-स्टोन और टेलरिंग का सारा सामान सबसे बेहतरीन क्वालिटी और वाजिब दाम में।
+                </p>
+            </div>
+
+            <!-- CTAs -->
+            <div class="reveal flex flex-wrap items-center justify-center gap-3.5 mt-8">
+                <a href="https://wa.me/919998078498?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="px-6 py-3 rounded-full text-xs sm:text-sm font-semibold bg-gold-400 hover:bg-gold-300 text-maroon-950 shadow-lg shadow-gold-500/15 flex items-center gap-2 transition transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>व्हाट्सएप पर ऑर्डर करें</span>
+                </a>
+
+                <a href="#products" 
+                   class="px-5 py-3 rounded-full text-xs sm:text-sm font-medium border border-gold-500/30 text-gold-200 hover:border-gold-400 hover:bg-maroon-900/40 transition">
+                    <span>सामान की लिस्ट देखें</span>
+                </a>
+
+                <a href="https://maps.google.com/maps?cid=4126246766233678113" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="px-5 py-3 rounded-full text-xs sm:text-sm font-medium border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-diamond-turn-right text-xs"></i>
+                    <span>दुकान का रास्ता</span>
+                </a>
+            </div>
+
+            <!-- 4 Metrics Highlight (Featuring 400+ Shades) -->
+            <div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-3.5 mt-14 w-full text-left">
+                <!-- Highlight 1: 400+ Shades -->
+                <div class="glass-box p-4 rounded-xl border-gold-500/40 bg-maroon-900/50">
+                    <span class="text-[11px] text-gold-400 font-medium block">कलर रेंज</span>
+                    <p class="text-2xl font-bold text-white mt-0.5">400+ शेड्स</p>
+                    <p class="text-[11px] text-stone-300 mt-1">परफेक्ट और सटीक मैचिंग</p>
+                </div>
+
+                <!-- Metric 2 -->
+                <div class="glass-box p-4 rounded-xl">
+                    <span class="text-[11px] text-gold-400 font-medium block">भरोसा</span>
+                    <p class="text-2xl font-bold text-white mt-0.5">2014 से</p>
+                    <p class="text-[11px] text-stone-300 mt-1">10+ वर्षों का अनुभव</p>
+                </div>
+
+                <!-- Metric 3 -->
+                <div class="glass-box p-4 rounded-xl">
+                    <span class="text-[11px] text-gold-400 font-medium block">खरीदारी</span>
+                    <p class="text-2xl font-bold text-white mt-0.5">रिटेल व थोक</p>
+                    <p class="text-[11px] text-stone-300 mt-1">दोनों पर वाजिब रेट</p>
+                </div>
+
+                <!-- Metric 4 -->
+                <div class="glass-box p-4 rounded-xl">
+                    <span class="text-[11px] text-gold-400 font-medium block">डिलीवरी</span>
+                    <p class="text-2xl font-bold text-white mt-0.5">पार्सल सेवा</p>
+                    <p class="text-[11px] text-stone-300 mt-1">घर बैठे मंगाने की सुविधा</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCT SHOWCASE -->
+        <section id="products" class="py-18 px-5 sm:px-8 max-w-6xl mx-auto">
+            <div class="reveal text-center max-w-2xl mx-auto mb-10">
+                <span class="text-gold-400 text-xs font-semibold tracking-wider uppercase">दुकान का सामान</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1.5">
+                    हमारी दुकान पर क्या-क्या मिलता है?
+                </h2>
+                <div class="w-10 h-0.5 bg-gold-400 mx-auto my-3"></div>
+                <p class="text-stone-300 text-xs sm:text-sm font-normal">
+                    यह कोई ऑनलाइन कार्ट नहीं है, बल्कि गैलरी है। आप व्हाट्सएप पर फोटो देखकर अपनी पसंद का सामान मंगवा सकते हैं।
+                </p>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-6" id="filterNav">
+                    <button onclick="applyFilter('all')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-gold-400 text-maroon-950 transition">सभी सामान</button>
+                    <button onclick="applyFilter('fabrics')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-gold-500/20 text-stone-300 hover:text-white transition">फैब्रिक्स व कपड़े</button>
+                    <button onclick="applyFilter('lace-latkan')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-gold-500/20 text-stone-300 hover:text-white transition">लेस और लटकन</button>
+                    <button onclick="applyFilter('craft-moti')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-gold-500/20 text-stone-300 hover:text-white transition">मोती, कुंदन व स्टोन</button>
+                    <button onclick="applyFilter('tailoring')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium border border-gold-500/20 text-stone-300 hover:text-white transition">टेलरिंग का सारा सामान</button>
+                </div>
+            </div>
+
+            <!-- Product Cards with 3D Tilt -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="productGrid">
+                
+                <!-- 1: Blouse & Chaniya Choli Fabrics -->
+                <div class="product-item reveal glass-box rounded-2xl p-5 relative flex flex-col justify-between" data-category="fabrics">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] text-gold-300 border border-gold-500/25 px-2.5 py-0.5 rounded-full">कपड़े व फैब्रिक्स</span>
+                            <i class="fa-solid fa-shirt text-gold-400/70 text-sm"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">ब्लाउज और चनिया चोली फैब्रिक्स</h3>
+                        <p class="text-xs text-stone-300 leading-relaxed mb-4">
+                            बनारसी ब्रोकेड, सिल्क, नेट, हेवी वेलवेट, ऑर्गेन्ज़ा, कॉटन सिल्क और पारंपरिक पटोला प्रिंट्स का शानदार कलेक्शन।
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-3 text-[11px]">
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">ब्रोकेड व सिल्क</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">पटोला व वेलवेट</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-gold-300 border border-gold-500/20">400+ शेड्स</span>
+                        </div>
+                        <div class="pt-3 border-t border-gold-500/15 flex items-center justify-between text-[11px] text-stone-400">
+                            <span>कट पीस व पूरा थान</span>
+                            <span class="text-gold-300">रिटेल व होलसेल</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2: Kurti & Gown Materials -->
+                <div class="product-item reveal glass-box rounded-2xl p-5 relative flex flex-col justify-between" data-category="fabrics">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] text-gold-300 border border-gold-500/25 px-2.5 py-0.5 rounded-full">ड्रेस मटेरियल्स</span>
+                            <i class="fa-solid fa-wand-magic-sparkles text-gold-400/70 text-sm"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">कुर्ती और गाउन मटेरियल्स</h3>
+                        <p class="text-xs text-stone-300 leading-relaxed mb-4">
+                            फॉक्स जॉर्जेट, भारी रेयॉन, शुद्ध कॉटन, डिजिटल प्रिंटेड ऑर्गेन्ज़ा, शिफॉन और क्रेप का रनिंग कपड़ा मीटर के हिसाब से।
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-3 text-[11px]">
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">जॉर्जेट व रेयॉन</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">प्योर कॉटन</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">डिजिटल प्रिंट्स</span>
+                        </div>
+                        <div class="pt-3 border-t border-gold-500/15 flex items-center justify-between text-[11px] text-stone-400">
+                            <span>पक्के रंग</span>
+                            <span class="text-gold-300">मीटर अनुसार उपलब्ध</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3: Designer Laces & Borders -->
+                <div class="product-item reveal glass-box rounded-2xl p-5 relative flex flex-col justify-between" data-category="lace-latkan">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] text-gold-300 border border-gold-500/25 px-2.5 py-0.5 rounded-full">लेस और बॉर्डर</span>
+                            <i class="fa-solid fa-ribbon text-gold-400/70 text-sm"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">डिजाइनर लेस और गोटा पट्टी</h3>
+                        <p class="text-xs text-stone-300 leading-relaxed mb-4">
+                            जरी बॉर्डर, असली मिरर वर्क, गोटा पट्टी रोल्स, कटवर्क लेसेस, वेलवेट बॉर्डर, पॉम-पॉम और क्रोशिया की सैकड़ों किस्में।
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-3 text-[11px]">
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">गोटा पट्टी रोल</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">कांच मिरर वर्क</span>
+                            <span class="bg-maroon-950/80 px-2 py-0.5 rounded text-stone-200 border border-gold-500/10">जरी कटवर्क</span>
+                        </div>
+                        <div class="pt-3 border-t border-gold-500/15 flex items-center justify-between text-[11px] text-stone-400">
+                            <span>सैकड़ों नई डिजाइन</span>
+                            <span class="text-gold-
