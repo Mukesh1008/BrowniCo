@@ -162,7 +162,7 @@
 
             <!-- WhatsApp Action -->
             <div class="flex items-center gap-3">
-                <a href="https://wa.me/919998078498?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
+                <a href="https://wa.me/918141261108?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
                    target="_blank" 
                    rel="noopener noreferrer"
                    class="px-4 py-2 rounded-full text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-2 transition duration-300 shadow-md shadow-emerald-950/40">
@@ -212,7 +212,7 @@
 
             <!-- CTAs -->
             <div class="reveal flex flex-wrap items-center justify-center gap-3.5 mt-8">
-                <a href="https://wa.me/919998078498?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
+                <a href="https://wa.me/918141261108?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
                    target="_blank"
                    rel="noopener noreferrer"
                    class="px-6 py-3 rounded-full text-xs sm:text-sm font-semibold bg-gold-400 hover:bg-gold-300 text-maroon-950 shadow-lg shadow-gold-500/15 flex items-center gap-2 transition transform hover:-translate-y-0.5">
@@ -262,6 +262,20 @@
                     <span class="text-[11px] text-gold-400 font-medium block">डिलीवरी</span>
                     <p class="text-2xl font-bold text-white mt-0.5">पार्सल सेवा</p>
                     <p class="text-[11px] text-stone-300 mt-1">घर बैठे मंगाने की सुविधा</p>
+                </div>
+            </div>
+
+            <!-- 400+ Shades Interactive Preview Ribbon -->
+            <div class="reveal w-full mt-12 p-4 rounded-2xl glass-box border-gold-500/30">
+                <div class="flex items-center justify-between mb-3 text-xs">
+                    <span class="text-gold-300 font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-palette text-gold-400"></i>
+                        <span>400+ मैचिंग शेड्स गैलरी (किसी भी रंग पर टैप करें)</span>
+                    </span>
+                    <span id="activeShadeName" class="text-stone-300 font-medium">रानी पिंक (Rani Pink)</span>
+                </div>
+                <div class="flex gap-2.5 overflow-x-auto pb-2 scrollbar-none items-center" id="shadesBar">
+                    <!-- Dynamic shade swatches populated via JS -->
                 </div>
             </div>
         </section>
@@ -449,7 +463,7 @@
                     <p class="text-white text-sm font-semibold">दुकान पर इससे भी बहुत ज्यादा वैरायटी मौजूद है!</p>
                     <p class="text-xs text-stone-300 mt-0.5">अगर आपको कोई खास कपड़ा या मैचिंग चाहिए, तो बस व्हाट्सएप पर मैसेज भेजें।</p>
                 </div>
-                <a href="https://wa.me/919998078498?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
+                <a href="https://wa.me/918141261108?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
                    target="_blank"
                    rel="noopener noreferrer"
                    class="whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition flex items-center gap-2">
@@ -601,89 +615,86 @@
             </div>
         </section>
 
-        <!-- STORE LOCATION & MAP -->
-        <section id="location" class="py-18 px-5 sm:px-8 max-w-6xl mx-auto">
-            <div class="reveal glass-box rounded-3xl p-6 sm:p-9 border border-gold-500/25">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
-                    
-                    <!-- Details -->
-                    <div class="lg:col-span-7">
-                        <span class="text-gold-400 text-xs font-semibold tracking-wider uppercase">दुकान पर पधारें</span>
-                        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-1.5">
-                            अंबिका मैचिंग सेंटर
-                        </h2>
-                        <p class="text-gold-200 text-base mb-6 font-medium">
-                            "सब कुछ एक ही छत के नीचे"
-                        </p>
+        <!-- STORE LOCATION & NAVIGATION (NO MAP IFRAME) -->
+        <section id="location" class="py-18 px-5 sm:px-8 max-w-5xl mx-auto">
+            <div class="reveal glass-box rounded-3xl p-7 sm:p-10 border border-gold-500/30 text-center relative overflow-hidden">
+                <!-- Background decorative glow -->
+                <div class="absolute -top-20 -left-20 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-20 -right-20 w-48 h-48 bg-maroon-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
-                        <div class="space-y-3.5 text-xs sm:text-sm text-stone-300 mb-7">
-                            <div class="flex items-start gap-3">
-                                <i class="fa-solid fa-location-dot text-gold-400 text-base mt-0.5"></i>
-                                <div>
-                                    <strong class="text-white block">दुकान का पता:</strong>
-                                    गोपाल डेयरी के सामने, जलधारा चौकड़ी के पास, GIDC, अंकलेश्वर, गुजरात – 393002
-                                </div>
+                <div class="relative z-10">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gold-500/30 text-gold-300 text-xs font-medium mb-3 bg-maroon-950/70">
+                        <i class="fa-solid fa-shop text-xs text-gold-400"></i>
+                        <span>दुकान पर पधारें &bull; अंकलेश्वर</span>
+                    </span>
+
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">
+                        अंबिका मैचिंग सेंटर
+                    </h2>
+                    <p class="text-gold-200 text-base font-medium mb-6">
+                        "सब कुछ एक ही छत के नीचे"
+                    </p>
+
+                    <!-- Store Info Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left my-8">
+                        <!-- Address -->
+                        <div class="p-4 rounded-xl bg-maroon-950/60 border border-gold-500/15">
+                            <div class="flex items-center gap-2.5 text-gold-400 mb-2">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span class="text-xs font-semibold uppercase text-gold-200">दुकान का पता</span>
                             </div>
-
-                            <div class="flex items-start gap-3">
-                                <i class="fa-regular fa-clock text-emerald-400 text-base mt-0.5"></i>
-                                <div>
-                                    <strong class="text-white block">दुकान का समय:</strong>
-                                    सुबह 10:00 बजे से रात 9:00 बजे तक (<span class="text-emerald-300 font-medium">सातों दिन खुला</span>)
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-3">
-                                <i class="fa-solid fa-phone text-gold-400 text-base mt-0.5"></i>
-                                <div>
-                                    <strong class="text-white block">फोन नंबर:</strong>
-                                    <div class="flex flex-wrap gap-4 mt-0.5">
-                                        <a href="tel:+919998078498" class="text-gold-300 hover:underline">+91 99980 78498</a>
-                                        <span>&bull;</span>
-                                        <a href="tel:+918141261108" class="text-gold-300 hover:underline">+91 81412 61108</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-3">
-                            <a href="https://maps.google.com/maps?cid=4126246766233678113" 
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               class="px-5 py-2.5 rounded-full text-xs font-semibold bg-gold-400 hover:bg-gold-300 text-maroon-950 flex items-center gap-2 transition">
-                                <i class="fa-solid fa-diamond-turn-right text-xs"></i>
-                                <span>Google Maps पर रास्ता देखें</span>
-                            </a>
-
-                            <a href="tel:+919998078498" 
-                               class="px-5 py-2.5 rounded-full text-xs font-medium border border-gold-500/35 text-gold-200 hover:bg-maroon-900 transition flex items-center gap-2">
-                                <i class="fa-solid fa-phone text-xs"></i>
-                                <span>कॉल करें</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Map Frame -->
-                    <div class="lg:col-span-5">
-                        <div class="rounded-2xl overflow-hidden border border-gold-500/25 bg-maroon-950 p-2 shadow-xl">
-                            <div class="relative w-full h-60 rounded-xl overflow-hidden">
-                                <iframe 
-                                    title="अंबिका मैचिंग सेंटर अंकलेश्वर मैप"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.578643887163!2d73.01254477595562!3d21.62534576717757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be02081d5915d97%3A0x3943fcfd9b9351e1!2sAmbika%20Matching%20Centre!5e0!3m2!1shi!2sin!4v1700000000000!5m2!1shi!2sin" 
-                                    width="100%" 
-                                    height="100%" 
-                                    style="border:0; filter: contrast(1.05) brightness(0.9);" 
-                                    allowfullscreen="" 
-                                    loading="lazy" 
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
-                            <p class="text-[11px] text-stone-300 text-center mt-2 font-light">
-                                जलधारा चौकड़ी, GIDC अंकलेश्वर (पार्किंग उपलब्ध)
+                            <p class="text-xs text-stone-200 leading-relaxed font-normal">
+                                गोपाल डेयरी के सामने, जलधारा चौकड़ी के पास, GIDC, अंकलेश्वर, गुजरात – 393002
                             </p>
                         </div>
+
+                        <!-- Timings -->
+                        <div class="p-4 rounded-xl bg-maroon-950/60 border border-gold-500/15">
+                            <div class="flex items-center gap-2.5 text-emerald-400 mb-2">
+                                <i class="fa-regular fa-clock"></i>
+                                <span class="text-xs font-semibold uppercase text-emerald-300">दुकान का समय</span>
+                            </div>
+                            <p class="text-xs text-stone-200 leading-relaxed font-normal">
+                                सुबह 10:00 बजे से रात 9:00 बजे तक
+                            </p>
+                            <span class="inline-block mt-1 text-[11px] text-emerald-400 font-semibold bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-500/30">
+                                सातों दिन खुला है
+                            </span>
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="p-4 rounded-xl bg-maroon-950/60 border border-gold-500/15">
+                            <div class="flex items-center gap-2.5 text-gold-400 mb-2">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="text-xs font-semibold uppercase text-gold-200">संपर्क नंबर</span>
+                            </div>
+                            <div class="flex flex-col gap-1 text-xs">
+                                <a href="tel:+918141261108" class="text-stone-200 hover:text-gold-300 transition">
+                                    <strong class="text-white">+91 81412 61108</strong> (ऑर्डर व पूछताछ)
+                                </a>
+                                <a href="tel:+919998078498" class="text-stone-200 hover:text-gold-300 transition">
+                                    <strong class="text-white">+91 99980 78498</strong> (दुकान)
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- Direct Navigation & Call Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                        <a href="https://maps.google.com/maps?cid=4126246766233678113" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold bg-gold-400 hover:bg-gold-300 text-maroon-950 shadow-lg shadow-gold-500/20 flex items-center gap-2.5 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-diamond-turn-right text-base text-maroon-950"></i>
+                            <span>गूगल मैप्स पर सीधा रास्ता देखें (Navigate)</span>
+                        </a>
+
+                        <a href="tel:+918141261108" 
+                           class="px-6 py-3.5 rounded-full text-xs sm:text-sm font-medium border border-gold-500/40 text-gold-200 hover:bg-maroon-900 transition flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-xs"></i>
+                            <span>सीधा कॉल करें</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -709,14 +720,14 @@
     <!-- FLOATING WHATSAPP & PHONE BUTTONS -->
     <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
         <!-- Call -->
-        <a href="tel:+919998078498" 
+        <a href="tel:+918141261108" 
            aria-label="फोन करें"
            class="w-10 h-10 rounded-full bg-maroon-900 border border-gold-500/40 text-gold-300 flex items-center justify-center shadow-lg hover:scale-105 transition duration-300">
             <i class="fa-solid fa-phone text-xs"></i>
         </a>
 
         <!-- WhatsApp -->
-        <a href="https://wa.me/919998078498?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
+        <a href="https://wa.me/918141261108?text=Hello!%20I%20saw%20your%20website%20and%20I%20want%20to%20order%20something%20from%20your%20shop." 
            target="_blank"
            rel="noopener noreferrer"
            aria-label="व्हाट्सएप पर संपर्क करें"
@@ -743,6 +754,43 @@
         }
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        // 400+ Shade Preview Ribbon
+        const shadesData = [
+            { name: "रानी पिंक (Rani Pink)", color: "#E0115F" },
+            { name: "रॉयल मरून (Royal Maroon)", color: "#5C0615" },
+            { name: "गोल्डन मस्टर्ड (Mustard Yellow)", color: "#E1AD01" },
+            { name: "पीकॉक ब्लू (Peacock Blue)", color: "#005F73" },
+            { name: "एमराल्ड ग्रीन (Emerald Green)", color: "#097969" },
+            { name: "वाइन पर्पल (Wine Purple)", color: "#471228" },
+            { name: "हल्दी पीला (Haldi Yellow)", color: "#FBBF24" },
+            { name: "सिंदूरी लाल (Sindoor Red)", color: "#C8102E" },
+            { name: "पिस्ता ग्रीन (Pista Green)", color: "#93C572" },
+            { name: "बेबी पिंक (Baby Pink)", color: "#F4C2C2" },
+            { name: "गोटा गोल्ड (Gold Zari)", color: "#D4AF37" },
+            { name: "मेहंदी हरा (Mehendi Green)", color: "#4B5320" },
+            { name: "नेवी ब्लू (Navy Blue)", color: "#000080" },
+            { name: "लैवेंडर (Lavender)", color: "#967BB6" },
+            { name: "टील ग्रीन (Teal)", color: "#008080" },
+            { name: "गाजरी कोरल (Peach Coral)", color: "#F88379" }
+        ];
+
+        const shadesBar = document.getElementById('shadesBar');
+        const activeShadeName = document.getElementById('activeShadeName');
+
+        if (shadesBar && activeShadeName) {
+            shadesData.forEach(item => {
+                const swatch = document.createElement('button');
+                swatch.type = 'button';
+                swatch.className = 'w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gold-300/40 flex-shrink-0 transition transform hover:scale-125 focus:outline-none';
+                swatch.style.backgroundColor = item.color;
+                swatch.title = item.name;
+                swatch.addEventListener('click', () => {
+                    activeShadeName.textContent = item.name;
+                });
+                shadesBar.appendChild(swatch);
+            });
         }
 
         // Scroll Reveal
@@ -798,10 +846,11 @@
             });
         });
 
-        // Floating Gold/Maroon Particles
+        // Background Animation: Flowing Silk Shimmer & Gold Particles
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        let waveStep = 0;
 
         function setCanvasDimensions() {
             canvas.width = window.innerWidth;
@@ -814,10 +863,10 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.radius = Math.random() * 1.5 + 0.6;
-                this.vx = (Math.random() - 0.5) * 0.2;
-                this.vy = (Math.random() - 0.5) * 0.2;
-                this.alpha = Math.random() * 0.4 + 0.15;
+                this.radius = Math.random() * 1.8 + 0.6;
+                this.vx = (Math.random() - 0.5) * 0.25;
+                this.vy = (Math.random() - 0.5) * 0.25;
+                this.alpha = Math.random() * 0.45 + 0.15;
             }
             update() {
                 this.x += this.vx;
@@ -837,22 +886,41 @@
 
         function createParticles() {
             particles = [];
-            const count = Math.min(Math.floor(window.innerWidth / 24), 40);
+            const count = Math.min(Math.floor(window.innerWidth / 22), 45);
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
             }
         }
         createParticles();
 
-        function renderParticles() {
+        function drawSilkWave() {
+            waveStep += 0.008;
+            ctx.save();
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.04)';
+            ctx.lineWidth = 1.5;
+
+            for (let j = 0; j < 3; j++) {
+                ctx.beginPath();
+                for (let x = 0; x < canvas.width; x += 15) {
+                    const y = Math.sin(x * 0.0025 + waveStep + j) * 60 + (canvas.height * (0.3 + j * 0.25));
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function renderCanvasAnimation() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawSilkWave();
             particles.forEach(p => {
                 p.update();
                 p.draw();
             });
-            requestAnimationFrame(renderParticles);
+            requestAnimationFrame(renderCanvasAnimation);
         }
-        renderParticles();
+        renderCanvasAnimation();
     </script>
 </body>
 </html>
